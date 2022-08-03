@@ -10,4 +10,7 @@
     <string name="label_color">Cor</string>
     <string name="label_confirm">Confirmar</string>
     <string name="cd_button_close">Fecha tela de cadastro de cartão</string>
+    <string name="label_show_success">Cartão cadastrado com sucesso.</string>
+    <string name="label_share">Compartilhar</string>
+
 </resources>
