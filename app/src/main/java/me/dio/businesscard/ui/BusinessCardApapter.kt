@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import me.dio.businesscard.data.BusinessCard
 import me.dio.businesscard.databinding.ItemBusinessCardBinding
 
-class BusinessCardApapter : ListAdapter<BusinessCard, BusinessCardApapter.ViewHolder>(DiffCallBack()) {
+class BusinessCardAdapter :
+    ListAdapter<BusinessCard, BusinessCardAdapter.ViewHolder>(DiffCallback()) {
 
-    var listinerShare:(View) -> Unit = {}
+    var listenerShare: (View) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemBusinessCardBinding.inflate(inflater, parent, false)
+
         return ViewHolder(binding)
     }
 
@@ -26,24 +28,24 @@ class BusinessCardApapter : ListAdapter<BusinessCard, BusinessCardApapter.ViewHo
 
     inner class ViewHolder(
         private val binding: ItemBusinessCardBinding
-    ) : RecyclerView.ViewHolder(binding.root){
-        fun bind (item: BusinessCard){
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: BusinessCard) {
             binding.tvName.text = item.nome
-            binding.tvCompany.text = item.empresa
-            binding.tvEmail.text = item.email
             binding.tvPhone.text = item.telefone
+            binding.tvEmail.text = item.email
+            binding.tvCompany.text = item.empresa
             binding.mcvContent.setCardBackgroundColor(Color.parseColor(item.backgroundcolor))
-            binding.mcvContent.setOnClickListener{
-                listinerShare(it)
+            binding.mcvContent.setOnClickListener {
+                listenerShare(it)
             }
         }
     }
 
-
 }
 
-class DiffCallBack: DiffUtil.ItemCallback<BusinessCard>(){
-    override fun areItemsTheSame(oldItem: BusinessCard, newItem: BusinessCard)= oldItem == newItem
-    override fun areContentsTheSame(oldItem: BusinessCard, newItem: BusinessCard) = oldItem.id == newItem.id
+class DiffCallback : DiffUtil.ItemCallback<BusinessCard>() {
+    override fun areItemsTheSame(oldItem: BusinessCard, newItem: BusinessCard) = oldItem == newItem
+    override fun areContentsTheSame(oldItem: BusinessCard, newItem: BusinessCard) =
+        oldItem.id == newItem.id
 }
-

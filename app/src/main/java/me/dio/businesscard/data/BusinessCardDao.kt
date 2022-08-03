@@ -9,8 +9,8 @@ import androidx.room.Query
 @Dao
 interface BusinessCardDao {
 
-    @Query("SELECT * FROM businesscard")
-    fun getAll() : LiveData<List<BusinessCard>>
+    @Query("SELECT * FROM BusinessCard")
+    fun getAll(): LiveData<List<BusinessCard>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(businessCard: BusinessCard)

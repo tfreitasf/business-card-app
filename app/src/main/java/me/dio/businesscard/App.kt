@@ -5,6 +5,6 @@ import me.dio.businesscard.data.AppDataBase
 import me.dio.businesscard.data.BusinessCardRepository
 
 class App : Application() {
-    private val dataBase by lazy { AppDataBase.getDataBase(this) }
-    val repository by lazy { BusinessCardRepository(dataBase.businessDao()) }
+    val database by lazy { AppDataBase.getDataBase(this) }
+    val repository by lazy { BusinessCardRepository(database.businessDao()) }
 }
